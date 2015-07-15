@@ -1,0 +1,4 @@
+grant
+{
+  permission java.io.FilePermission "/home/pvlasenko/test/testFileSafe.txt","read";
+};
