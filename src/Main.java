@@ -10,12 +10,14 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
+import java.util.Enumeration;
 
 public class Main {
 
     public static void main(String[] args) throws Exception
     {
-        testAuthJAAS();
+        //testAuthJAAS();
+
     }
 
     public static void testAuthJAAS()
@@ -33,7 +35,7 @@ public class Main {
     }
 
 
-    public void testPolicy()
+    public static void testPolicy()
     {
         SecurityManagerTool securityManagerTool = new SecurityManagerTool();
 
@@ -58,14 +60,14 @@ public class Main {
             String password = "123123";
             keystore.load(is, password.toCharArray());
 
-
-//            Enumeration enumeration = keystore.aliases();
-//            while(enumeration.hasMoreElements()) {
-//                String alias = (String)enumeration.nextElement();
-//                System.out.println("alias name: " + alias);
-//                Certificate certificate = keystore.getCertificate(alias);
-//                System.out.println(certificate.toString());
-//            }
+            // Print all keys and certificate
+            /*Enumeration enumeration = keystore.aliases();
+            while(enumeration.hasMoreElements()) {
+                String alias = (String)enumeration.nextElement();
+                System.out.println("alias name: " + alias);
+                Certificate certificate = keystore.getCertificate(alias);
+                System.out.println(certificate.toString());
+            }*/
 
             String allias = "bob";
             Certificate c = keystore.getCertificate(allias);

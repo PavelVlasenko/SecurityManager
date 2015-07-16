@@ -19,6 +19,7 @@ public class SecurityManagerTool
         System.setProperty("java.security.policy","file:"+filePath);
         security = new SecurityManager();
         System.setSecurityManager(security);
+        security.getSecurityContext();
     }
 
     public void checkOpenFile(String filePath)
