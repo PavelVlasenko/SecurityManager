@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Authentificate
+ * JAAS Authentificator
+ *
  *
  * @author Pavel Vlasenko
  */
@@ -27,23 +28,29 @@ public class JAAS_Authentificator
      * Initialize KeyStoreLoginModule with options
      *
      * @param urlKeystore URL path to keystore file
-     * @param allias allias in keystore
+     * @param alias allias in keystore
      * @param keystore_password  keystore password
-     * @param allias_password   allias password
+     * @param alias_password   allias password
      */
-    public void initialize(String  urlKeystore, String allias, String keystore_password, String allias_password)
+    public void initialize(String  urlKeystore, String alias, String keystore_password, String alias_password)
     {
         loginModule = new KeyStoreLoginModule();
         subject = new Subject();
         Map options = new HashMap();
 
         options.put(O_URL_KEYSTORE, urlKeystore);
-        options.put(O_ALIAS, allias);
+        options.put(O_ALIAS, alias);
         options.put(O_SPASS, keystore_password);
-        options.put(O_KPASS, allias_password);
+        options.put(O_KPASS, alias_password);
         loginModule.initialize(subject, null, null, options);
     }
 
+
+    /**
+     *  JAAS Authentificate
+     *  Login using KeyStoreLoginModule
+     *  Checks alias and private key in keystore
+     */
     public void auth()
     {
         try

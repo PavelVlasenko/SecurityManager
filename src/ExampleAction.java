@@ -1,5 +1,6 @@
 /**
  * Example action executed from {@link JAAS_Authentificator}
+ * This action check security open File
  *
  * @author Pavel Vlasenko
  */
