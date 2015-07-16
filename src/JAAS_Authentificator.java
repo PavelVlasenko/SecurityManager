@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * JAAS Authentificator
- *
+ * KeyStoreLoginModule used for authentificate with key pairs generated in keystore
  *
  * @author Pavel Vlasenko
  */
@@ -59,7 +59,6 @@ public class JAAS_Authentificator
         }
         catch(LoginException le)
         {
-            // auth NOT passed
             //le.printStackTrace();
             System.out.println("AUTH  NOT PASSED");
         }

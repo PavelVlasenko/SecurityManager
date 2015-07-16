@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.AccessController;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -16,10 +17,14 @@ public class Main {
 
     public static void main(String[] args) throws Exception
     {
-        //testAuthJAAS();
+        testAuthJAAS();
 
     }
 
+
+    /**
+     *  JAAS Authentification and implementation doAs and doAsPrivileged method
+     */
     public static void testAuthJAAS()
     {
         // Initialize JAAS Authentificator  and try to login
@@ -31,7 +36,7 @@ public class Main {
         Subject.doAs(auth.subject, new ExampleAction());
 
         //DoAsPrivileged
-        Subject.doAsPrivileged(auth.subject, new ExampleAction(), null);
+        Subject.doAsPrivileged(auth.subject, new ExampleAction(), AccessController.getContext());
     }
 
 
