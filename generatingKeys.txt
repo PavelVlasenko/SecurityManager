@@ -1,0 +1,5 @@
+
+// Generate Keys
+
+keytool -genkey -alias alliasName -keystore keystore.jks
+

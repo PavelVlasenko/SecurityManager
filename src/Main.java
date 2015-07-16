@@ -28,15 +28,13 @@ public class Main {
         //DoAs Method
         Subject.doAs(auth.subject, new ExampleAction());
 
-        //DoAs
-        //Subject.doAsPrivileged()
-
+        //DoAsPrivileged
+        Subject.doAsPrivileged(auth.subject, new ExampleAction(), null);
     }
 
 
     public void testPolicy()
     {
-        System.out.println("===== Start security tool");
         SecurityManagerTool securityManagerTool = new SecurityManagerTool();
 
         securityManagerTool.loadPolicyFile("/home/pvlasenko/Documents/Upwork/SecurityManager/security.config");

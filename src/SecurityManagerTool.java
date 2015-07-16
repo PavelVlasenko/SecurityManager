@@ -1,7 +1,7 @@
 import java.security.AccessController;
 
 /**
- * TODO: Java docs
+ * Security manager for policy files
  *
  * @author Pavel Vlasenko
  */
@@ -9,6 +9,11 @@ public class SecurityManagerTool
 {
     SecurityManager security;
 
+    /**
+     * Init security manager with policy file
+     *
+     * @param filePath Security policy file path
+     */
     public void loadPolicyFile(String filePath)
     {
         System.setProperty("java.security.policy","file:"+filePath);
@@ -18,13 +23,18 @@ public class SecurityManagerTool
 
     public void checkOpenFile(String filePath)
     {
-       // SecurityManager security = System.getSecurityManager();
         try
         {
             if(security != null)
             {
                 security.getSecurityContext();
                 security.checkRead(filePath);
+            }
+
+            else
+            {
+                System.out.println("Security manager not init");
+                SecurityManager security = System.getSecurityManager();
             }
             //if safe do this action
             System.out.println("Safe operation");
@@ -35,9 +45,5 @@ public class SecurityManagerTool
             System.out.println("Unsafe operation");
         }
     }
-
-
-    //check Sertification
-
 
 }
