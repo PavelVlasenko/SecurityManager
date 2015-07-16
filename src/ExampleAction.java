@@ -8,8 +8,8 @@ public class ExampleAction implements java.security.PrivilegedAction
     public Object run() {
         java.io.File f = new java.io.File("test.txt");
 
-        // the following call invokes a security check
-        if (f.exists()) {
+        //try to open a file
+        if (f.canRead()) {
             System.out.println("File foo.txt exists");
         }
         return null;

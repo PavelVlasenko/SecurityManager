@@ -1,3 +1,6 @@
+import com.sun.jmx.remote.security.SubjectDelegator;
+
+import javax.security.auth.Subject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,9 +20,17 @@ public class Main {
 
     public static void testAuthJAAS()
     {
+        // Initialize JAAS Authentificator  and try to login
         JAAS_Authentificator auth = new JAAS_Authentificator();
         auth.initialize("file:///home/pvlasenko/security.jks", "bob", "file:///home/pvlasenko/key.txt", "file:///home/pvlasenko/prkey.txt");
         auth.auth();
+
+        //DoAs Method
+        Subject.doAs(auth.subject, new ExampleAction());
+
+        //DoAs
+        //Subject.doAsPrivileged()
+
     }
 
 
