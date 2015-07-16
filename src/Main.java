@@ -7,13 +7,19 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
-import java.util.Enumeration;
 
 public class Main {
 
     public static void main(String[] args) throws Exception
     {
-         Authentificator.auth();
+        testAuthJAAS();
+    }
+
+    public static void testAuthJAAS()
+    {
+        JAAS_Authentificator auth = new JAAS_Authentificator();
+        auth.initialize("file:///home/pvlasenko/security.jks", "bob", "file:///home/pvlasenko/key.txt", "file:///home/pvlasenko/prkey.txt");
+        auth.auth();
     }
 
 
